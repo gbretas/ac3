@@ -1,0 +1,67 @@
+ Unified Cache - Level 1
+     Read Access: 32.0 = 32.0
+     Read Cycles: 32.0 = 32.0
+     Read Time: 32.0 = 32.0
+     Write Access: 8.0 = 8.0
+     Write Cycles: 16.0 = 16.0
+     Write Time: 16.0 = 16.0
+     Total Access: 40.0 = 40.0
+     Total Hit: 19.0 != 21.0 | (+10.5%)
+     Total Miss: 21.0 != 19.0 | (-9.5%)
+     Hit rate: 0.475 != 0.525 | (+10.5%)
+     Total Time: 48.0 = 48.0
+
+Main Memory
+     Read Access: 74.0 != 51.0 | (-31.1%)
+     Read Cycles: 74.0 != 51.0 | (-31.1%)
+     Read Time: 740.0 != 510.0 | (-31.1%)
+     Write Access: 56.0 != 24.0 | (-57.1%)
+     Write Cycles: 112.0 != 48.0 | (-57.1%)
+     Write Time: 1120.0 != 480.0 | (-57.1%)
+     Total Access: 130.0 != 75.0 | (-42.3%)
+     Total Time: 1860.0 != 990.0 | (-46.8%)
+
+Disk
+     Read Access: 6.0 != 2.0 | (-66.7%)
+     Read Cycles: 6.0 != 2.0 | (-66.7%)
+     Read Time: 600.0 != 200.0 | (-66.7%)
+     Write Access: 6.0 != 2.0 | (-66.7%)
+     Write Cycles: 12.0 != 4.0 | (-66.7%)
+     Write Time: 1200.0 != 400.0 | (-66.7%)
+     Total Time: 1800.0 != 600.0 | (-66.7%)
+
+Page Table
+     Read Access: 17.0 != 20.0 | (+17.6%)
+     Read Cycles: 17.0 != 20.0 | (+17.6%)
+     Read Time: 170.0 != 200.0 | (+17.6%)
+     Write Access: 12.0 != 4.0 | (-66.7%)
+     Write Cycles: 24.0 != 8.0 | (-66.7%)
+     Write Time: 240.0 != 80.0 | (-66.7%)
+     Total Access: 17.0 != 20.0 | (+17.6%)
+     Page Fault: 6.0 != 2.0 | (-66.7%)
+     Total Time: 410.0 != 280.0 | (-31.7%)
+
+TLB
+     Read Access: 40.0 = 40.0
+     Read Cycles: 40.0 = 40.0
+     Read Time: 40.0 = 40.0
+     Write Access: 17.0 != 20.0 | (+17.6%)
+     Write Cycles: 34.0 != 40.0 | (+17.6%)
+     Write Time: 34.0 != 40.0 | (+17.6%)
+     Total Access: 40.0 = 40.0
+     Total Hit: 23.0 != 20.0 | (-13.0%)
+     Total Miss: 17.0 != 20.0 | (+17.6%)
+     Hit rate: 0.575 != 0.5 | (-13.0%)
+     Total Time: 74.0 != 80.0 | (+8.1%)
+
+ Total Time: 3782.0 != 1718.0 | (-54.6%)
+===========================================================================
+
+Dados comparados: 47
+Quantidade de diferenças entre os resultados : 35
+Quantidade de dados iguais entre os resultados : 12
+
+Percentual de diferenças entre os resultados : 74.47%
+Percentual de iguais entre os resultados : 25.53%
+
+===========================================================================

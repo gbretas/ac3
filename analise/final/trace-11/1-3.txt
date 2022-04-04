@@ -1,0 +1,67 @@
+ Unified Cache - Level 1
+     Read Access: 32.0 = 32.0
+     Read Cycles: 32.0 = 32.0
+     Read Time: 32.0 = 32.0
+     Write Access: 8.0 = 8.0
+     Write Cycles: 16.0 = 16.0
+     Write Time: 16.0 = 16.0
+     Total Access: 40.0 = 40.0
+     Total Hit: 21.0 = 21.0
+     Total Miss: 19.0 = 19.0
+     Hit rate: 0.525 = 0.525
+     Total Time: 48.0 = 48.0
+
+Main Memory
+     Read Access: 51.0 = 51.0
+     Read Cycles: 51.0 = 51.0
+     Read Time: 510.0 = 510.0
+     Write Access: 21.0 != 24.0 | (+14.3%)
+     Write Cycles: 42.0 != 48.0 | (+14.3%)
+     Write Time: 420.0 != 480.0 | (+14.3%)
+     Total Access: 72.0 != 75.0 | (+4.2%)
+     Total Time: 930.0 != 990.0 | (+6.5%)
+
+Disk
+     Read Access: 2.0 = 2.0
+     Read Cycles: 2.0 = 2.0
+     Read Time: 200.0 = 200.0
+     Write Access: 2.0 = 2.0
+     Write Cycles: 4.0 = 4.0
+     Write Time: 400.0 = 400.0
+     Total Time: 600.0 = 600.0
+
+Page Table
+     Read Access: 20.0 = 20.0
+     Read Cycles: 20.0 = 20.0
+     Read Time: 200.0 = 200.0
+     Write Access: 4.0 = 4.0
+     Write Cycles: 8.0 = 8.0
+     Write Time: 80.0 = 80.0
+     Total Access: 20.0 = 20.0
+     Page Fault: 2.0 = 2.0
+     Total Time: 280.0 = 280.0
+
+TLB
+     Read Access: 40.0 = 40.0
+     Read Cycles: 40.0 = 40.0
+     Read Time: 40.0 = 40.0
+     Write Access: 20.0 = 20.0
+     Write Cycles: 40.0 = 40.0
+     Write Time: 40.0 = 40.0
+     Total Access: 40.0 = 40.0
+     Total Hit: 20.0 = 20.0
+     Total Miss: 20.0 = 20.0
+     Hit rate: 0.5 = 0.5
+     Total Time: 80.0 = 80.0
+
+ Total Time: 1658.0 != 1718.0 | (+3.6%)
+===========================================================================
+
+Dados comparados: 47
+Quantidade de diferenças entre os resultados : 6
+Quantidade de dados iguais entre os resultados : 41
+
+Percentual de diferenças entre os resultados : 12.77%
+Percentual de iguais entre os resultados : 87.23%
+
+===========================================================================

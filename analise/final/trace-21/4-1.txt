@@ -1,0 +1,67 @@
+ Unified Cache - Level 1
+     Read Access: 28.0 != 32.0 | (+14.3%)
+     Read Cycles: 28.0 != 32.0 | (+14.3%)
+     Read Time: 28.0 != 32.0 | (+14.3%)
+     Write Access: 12.0 != 8.0 | (-33.3%)
+     Write Cycles: 24.0 != 16.0 | (-33.3%)
+     Write Time: 24.0 != 16.0 | (-33.3%)
+     Total Access: 40.0 = 40.0
+     Total Hit: 21.0 = 21.0
+     Total Miss: 19.0 = 19.0
+     Hit rate: 0.525 = 0.525
+     Total Time: 52.0 != 48.0 | (-7.7%)
+
+Main Memory
+     Read Access: 38.0 != 51.0 | (+34.2%)
+     Read Cycles: 38.0 != 51.0 | (+34.2%)
+     Read Time: 380.0 != 510.0 | (+34.2%)
+     Write Access: 12.0 != 21.0 | (+75.0%)
+     Write Cycles: 24.0 != 42.0 | (+75.0%)
+     Write Time: 240.0 != 420.0 | (+75.0%)
+     Total Access: 50.0 != 72.0 | (+44.0%)
+     Total Time: 620.0 != 930.0 | (+50.0%)
+
+Disk
+     Read Access: 0.0 != 2.0 | (+50.0%)
+     Read Cycles: 0.0 != 2.0 | (+50.0%)
+     Read Time: 0.0 != 200.0 | (+50.0%)
+     Write Access: 0.0 != 2.0 | (+50.0%)
+     Write Cycles: 0.0 != 4.0 | (+50.0%)
+     Write Time: 0.0 != 400.0 | (+50.0%)
+     Total Time: 0.0 != 600.0 | (+50.0%)
+
+Page Table
+     Read Access: 19.0 != 20.0 | (+5.3%)
+     Read Cycles: 19.0 != 20.0 | (+5.3%)
+     Read Time: 190.0 != 200.0 | (+5.3%)
+     Write Access: 0.0 != 4.0 | (+5.3%)
+     Write Cycles: 0.0 != 8.0 | (+5.3%)
+     Write Time: 0.0 != 80.0 | (+5.3%)
+     Total Access: 19.0 != 20.0 | (+5.3%)
+     Page Fault: 0.0 != 2.0 | (+5.3%)
+     Total Time: 190.0 != 280.0 | (+47.4%)
+
+TLB
+     Read Access: 40.0 = 40.0
+     Read Cycles: 40.0 = 40.0
+     Read Time: 40.0 = 40.0
+     Write Access: 19.0 != 20.0 | (+5.3%)
+     Write Cycles: 38.0 != 40.0 | (+5.3%)
+     Write Time: 38.0 != 40.0 | (+5.3%)
+     Total Access: 40.0 = 40.0
+     Total Hit: 21.0 != 20.0 | (-4.8%)
+     Total Miss: 19.0 != 20.0 | (+5.3%)
+     Hit rate: 0.525 != 0.5 | (-4.8%)
+     Total Time: 78.0 != 80.0 | (+2.6%)
+
+ Total Time: 750.0 != 1658.0 | (+121.1%)
+===========================================================================
+
+Dados comparados: 47
+Quantidade de diferenças entre os resultados : 39
+Quantidade de dados iguais entre os resultados : 8
+
+Percentual de diferenças entre os resultados : 82.98%
+Percentual de iguais entre os resultados : 17.02%
+
+===========================================================================

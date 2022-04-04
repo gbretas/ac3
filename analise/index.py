@@ -123,17 +123,32 @@ def auto():
 
             comparacoes += 1
             
-            result1 = readfile('resultados/'+file)
-            result2 = readfile('resultados/'+file2)
+            result1 = readfile('res_brutos/'+file)
+            result2 = readfile('res_brutos/'+file2)
 
             iguais = 0
             diferencas = 0
             dados_comparados = 0
             
-            file_final_name = file.split(".txt")[0]
-            file2_final_name = file2.split(".txt")[0]
+            file_final_name = file.split(".")[0]
+            file2_final_name = file2.split(".")[0]
 
-            final_name = "final/"+file_final_name+"-"+file2_final_name+".txt"
+            trace1 = int(file.split(".")[1])
+            trace2 = int(file2.split(".")[1])
+
+            if(trace1 == 1) and (trace2 == 1):
+                trace_folder = "trace-11"
+            elif(trace1 == 1) and (trace2 == 2):
+                trace_folder = "trace-12"
+            elif(trace1 == 2) and (trace2 == 1):
+                trace_folder = "trace-21"
+            elif(trace1 == 2) and (trace2 == 2):
+                trace_folder = "trace-22"
+            else:
+                print("Trace não encontrado")
+                exit()
+
+            final_name = "final/"+trace_folder+"/"+file_final_name+"-"+file2_final_name+".txt"
 
             final = open(final_name, 'w')
 
