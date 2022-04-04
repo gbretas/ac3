@@ -1,6 +1,7 @@
 import os
 import sys
 import random
+import shutil
 
 #esquema de analise final
 
@@ -346,6 +347,8 @@ def comparar():
     
 def gerador_trace():
     traces = int(input("Digite a quantidade de traces para gerar: "))
+    if not os.path.exists('tracegen'):
+        os.makedirs('tracegen')
     if traces < 1:
         print("Número inválido")
         exit()
@@ -355,8 +358,13 @@ def gerador_trace():
             trace.write(str(random.choice([0, 1, 2])) + " " + str(random.choice([0,1,2,3,4,5,6,7,8,9,10,"a","b","c","d","e","f"])) + "\n")
         trace.close()
 
+def delete_all_traces():
+    if os.path.exists('tracegen'):
+        shutil.rmtree('tracegen')
+    return
+
 if __name__ == "__main__":
-    choice = int(input("1 - Gerar comparação entre dois arquivos\n2 - Gerar comparação entre vários arquivos brutos\n3 - Analisar estatistícas\n4 - Gerador de Traces\nDigite a sua escolha: "))
+    choice = int(input("1 - Gerar comparação entre dois arquivos\n2 - Gerar comparação entre vários arquivos brutos\n3 - Analisar estatistícas\n4 - Gerador de Trace\n5 - Deletar todas traces geradas\nDigite a sua escolha: "))
     if choice == 1:
         manual()
     elif choice == 2:
@@ -365,6 +373,8 @@ if __name__ == "__main__":
         comparar()
     elif choice == 4:
         gerador_trace()
+    elif choice == 5:
+        delete_all_traces()
     else:
         print("Invalid choice")
         exit()
