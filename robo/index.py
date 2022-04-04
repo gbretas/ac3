@@ -31,6 +31,11 @@ import shutil
 # 4.1 -> WriteThrough e FIFO- Trace 1
 # 4.2 -> WriteThrough e FIFO - Trace 2
 
+# 1 -> WriteBack e LRU
+# 2 -> WriteBack e FIFO
+# 3 -> WriteThrough e LRU
+# 4 -> WriteThrough e FIFO
+
 def readfile(file):
     with open(file, 'r') as f:
         lines = f.readlines()
@@ -179,6 +184,7 @@ def auto():
             final = open(final_name, 'w')
 
             for i in range(len(result1)):
+                ultimo = ""
                 dados_comparados += 1
                 linha1 = result1[i]
                 linha2 = result2[i]
@@ -210,11 +216,11 @@ def auto():
 
 
                         final.write(": " + str(round(dado1,3)) + " != " + str(round(dado2,3)))
-                        # final.write(" |  (" + str(porcentagem_show) + "%)")
                         final.write(" | ("+str(change_show)+"%)\n")
                     else:
                         iguais+=1
-                        final.write(": " + str(round(dado1,3)) + " = " + str(round(dado2,3)) + "\n")
+                        final.write(": " + str(round(dado1,3)) + " = " + str(round(dado2,3)))
+                        final.write(" | (0.0%)\n")
 
                 else:
                     dados_comparados-=1
@@ -223,7 +229,7 @@ def auto():
             # print("Quantidade de diferenças entre os resultados : " + str(diferencas))
             # print("Quantidade de dados iguais entre os resultados : " + str(iguais))
 
-            print("Comparação entre " + file + " e " + file2 + " finalizada")
+            # print("Comparação entre " + file + " e " + file2 + " finalizada")
 
             final.write("="*75 + "\n\n")
             final.write("Dados comparados: " + str(dados_comparados) + "\n")
@@ -363,8 +369,64 @@ def delete_all_traces():
         shutil.rmtree('tracegen')
     return
 
+
+def comparar_tempo_total():
+    
+    desempenho = []
+
+    folders = [f.path for f in os.scandir('./final') if f.is_dir()]
+    for folder in folders:
+        arqs = os.listdir(folder)
+        for arq in arqs:
+            if arq.endswith(".txt"):
+                arq_path = os.path.join(folder, arq)
+                line_number = 0
+                with open(arq_path, 'r') as f:
+                    for line in f:
+                        line_number+=1
+                        if line_number == 57:
+                            change = line.split("| ")[1].strip()
+                            trace = folder.split("/")[-1]
+                            arq_helper = arq_path.split("/")[-1]
+                            arq_helper = arq_helper.split(".")[0]
+                            arq1 = arq_helper.split("-")[0]
+                            arq2 = arq_helper.split("-")[1]
+
+                            change = change.replace("(", "")
+                            change = change.replace(")", "")
+                            change = change.replace("%", "")
+
+                            obj = {"trace": trace, "arq1": arq1, "arq2": arq2, "change": change}
+                            desempenho.append(obj)
+    #Saiu do loop
+
+    #order by change and consider negative
+    desempenho = sorted(desempenho, key=lambda k: float(k['change']), reverse=False)
+    for i in desempenho:
+        if float(i['change']) > 0:
+            print(i["trace"]+" - A arquitetura "+i["arq1"]+" em relação a arquitetura "+i["arq2"]+", aumentou o tempo total em "+i["change"]+"%")
+        elif float(i['change']) < 0:
+            print(i["trace"]+" - A arquitetura "+i["arq1"]+" em relação a arquitetura "+i["arq2"]+", diminuiu o tempo total em "+i["change"]+"%")
+        else:
+            print(i["trace"]+" - A arquitetura "+i["arq1"]+" em relação a arquitetura "+i["arq2"]+", não alterou o tempo total")
+    # print(desempenho)
+        #ler cada arquivo e organizar pela linha 57
+
+
+
 if __name__ == "__main__":
-    choice = int(input("1 - Gerar comparação entre dois arquivos\n2 - Gerar comparação entre vários arquivos brutos\n3 - Analisar estatistícas\n4 - Gerador de Trace\n5 - Deletar todas traces geradas\nDigite a sua escolha: "))
+    print("\nBem vindo ao Robo-Cache\n")
+    print("============ Comparações =============")
+    print("1 - Comprar duas arquiteturas/traces")
+    print("2 - Comparar entre vários arquivos brutos")
+    print("========= Analisar arquivos ==========")
+    print("3 - Analisar estatistícas entre duas arquiteturas/traces")
+    print("4 - Analisar tempo total geral")
+    print("========= Funções de Traces  =========")
+    print("6 - Gerar traces aleatórias")
+    print("7 - Deletar todos os arquivos de traces")
+    print("")
+    choice = int(input("Digite a sua escolha: "))
     if choice == 1:
         manual()
     elif choice == 2:
@@ -372,8 +434,10 @@ if __name__ == "__main__":
     elif choice == 3:
         comparar()
     elif choice == 4:
+        comparar_tempo_total()
+    elif choice == 6:
         gerador_trace()
-    elif choice == 5:
+    elif choice == 7:
         delete_all_traces()
     else:
         print("Invalid choice")

@@ -5,10 +5,10 @@
      Write Access: 8.0 != 12.0 | (+50.0%)
      Write Cycles: 16.0 != 24.0 | (+50.0%)
      Write Time: 16.0 != 24.0 | (+50.0%)
-     Total Access: 40.0 = 40.0
-     Total Hit: 21.0 = 21.0
-     Total Miss: 19.0 = 19.0
-     Hit rate: 0.525 = 0.525
+     Total Access: 40.0 = 40.0 | (0.0%)
+     Total Hit: 21.0 = 21.0 | (0.0%)
+     Total Miss: 19.0 = 19.0 | (0.0%)
+     Hit rate: 0.525 = 0.525 | (0.0%)
      Total Time: 48.0 != 52.0 | (+8.3%)
 
 Main Memory
@@ -42,13 +42,13 @@ Page Table
      Total Time: 280.0 != 190.0 | (-32.1%)
 
 TLB
-     Read Access: 40.0 = 40.0
-     Read Cycles: 40.0 = 40.0
-     Read Time: 40.0 = 40.0
+     Read Access: 40.0 = 40.0 | (0.0%)
+     Read Cycles: 40.0 = 40.0 | (0.0%)
+     Read Time: 40.0 = 40.0 | (0.0%)
      Write Access: 20.0 != 19.0 | (-5.0%)
      Write Cycles: 40.0 != 38.0 | (-5.0%)
      Write Time: 40.0 != 38.0 | (-5.0%)
-     Total Access: 40.0 = 40.0
+     Total Access: 40.0 = 40.0 | (0.0%)
      Total Hit: 20.0 != 21.0 | (+5.0%)
      Total Miss: 20.0 != 19.0 | (-5.0%)
      Hit rate: 0.5 != 0.525 | (+5.0%)

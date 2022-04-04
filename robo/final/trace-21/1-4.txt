@@ -5,7 +5,7 @@
      Write Access: 12.0 != 8.0 | (-33.3%)
      Write Cycles: 24.0 != 16.0 | (-33.3%)
      Write Time: 24.0 != 16.0 | (-33.3%)
-     Total Access: 40.0 = 40.0
+     Total Access: 40.0 = 40.0 | (0.0%)
      Total Hit: 22.0 != 19.0 | (-13.6%)
      Total Miss: 18.0 != 21.0 | (+16.7%)
      Hit rate: 0.55 != 0.475 | (-13.6%)
@@ -42,13 +42,13 @@ Page Table
      Total Time: 180.0 != 410.0 | (+127.8%)
 
 TLB
-     Read Access: 40.0 = 40.0
-     Read Cycles: 40.0 = 40.0
-     Read Time: 40.0 = 40.0
+     Read Access: 40.0 = 40.0 | (0.0%)
+     Read Cycles: 40.0 = 40.0 | (0.0%)
+     Read Time: 40.0 = 40.0 | (0.0%)
      Write Access: 18.0 != 17.0 | (-5.6%)
      Write Cycles: 36.0 != 34.0 | (-5.6%)
      Write Time: 36.0 != 34.0 | (-5.6%)
-     Total Access: 40.0 = 40.0
+     Total Access: 40.0 = 40.0 | (0.0%)
      Total Hit: 22.0 != 23.0 | (+4.5%)
      Total Miss: 18.0 != 17.0 | (-5.6%)
      Hit rate: 0.55 != 0.575 | (+4.5%)
