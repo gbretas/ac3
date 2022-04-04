@@ -1,5 +1,6 @@
 import os
 import sys
+import random
 
 #esquema de analise final
 
@@ -70,6 +71,9 @@ def manual():
     iguais = 0
     diferencas = 0
     dados_comparados = 0
+
+    if not os.path.exists('final_manual'):
+        os.makedirs('final_manual')
 
     final = open('final_manual'+nome, 'w')
 
@@ -165,6 +169,9 @@ def auto():
             else:
                 print("Trace não encontrado")
                 exit()
+
+            if not os.path.exists('final'):
+                os.makedirs('final')
 
             final_name = "final/"+trace_folder+"/"+file_final_name+"-"+file2_final_name+".txt"
 
@@ -337,15 +344,27 @@ def comparar():
 
     return
     
+def gerador_trace():
+    traces = int(input("Digite a quantidade de traces para gerar: "))
+    if traces < 1:
+        print("Número inválido")
+        exit()
+    for i in range(traces):
+        trace = open("tracegen/trace" + str(i) + ".txt", "w")
+        for i in range(random.randint(0,50)):
+            trace.write(str(random.choice([0, 1, 2])) + " " + str(random.choice([0,1,2,3,4,5,6,7,8,9,10,"a","b","c","d","e","f"])) + "\n")
+        trace.close()
 
 if __name__ == "__main__":
-    choice = int(input("1 - Gerar comparação entre dois arquivos\n2 - Gerar comparação entre vários arquivos brutos\n3 - Analisar estatistícas\nDigite a sua escolha: "))
+    choice = int(input("1 - Gerar comparação entre dois arquivos\n2 - Gerar comparação entre vários arquivos brutos\n3 - Analisar estatistícas\n4 - Gerador de Traces\nDigite a sua escolha: "))
     if choice == 1:
         manual()
     elif choice == 2:
         auto()
     elif choice == 3:
         comparar()
+    elif choice == 4:
+        gerador_trace()
     else:
         print("Invalid choice")
         exit()
