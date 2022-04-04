@@ -71,7 +71,7 @@ def manual():
     diferencas = 0
     dados_comparados = 0
 
-    final = open('final/'+nome, 'w')
+    final = open('final_manual'+nome, 'w')
 
     for i in range(len(result1)):
         dados_comparados += 1
@@ -128,7 +128,6 @@ def manual():
 
     final.close()
 
-    
 def auto():
 
     #read all files from folder resultados
@@ -178,7 +177,6 @@ def auto():
 
                 text = linha1.split(":")
 
-
                 final.write(text[0])
 
                 # if line is empty
@@ -195,11 +193,7 @@ def auto():
                             change = round(diff/dado1,3)
                         except ZeroDivisionError:
                             porcentagem = 0
-
                         porcentagem_show = round(porcentagem*100,3)
-
-
-
      
                         if change > 0:
                             change_show = "+" + str(round(change*100,2))
@@ -236,14 +230,122 @@ def auto():
             final.close()
     print(str(comparacoes)+" comparações finalizada")
 
+def comparar_arquiteturas(arquitetura1, trace1, arquitetura2, trace2):
+    file1 = readfile('res_brutos/'+str(arquitetura1)+'.'+str(trace1)+'.txt')
+    file2 = readfile('res_brutos/'+str(arquitetura2)+'.'+str(trace2)+'.txt')
+
+    iguais = 0
+    diferencas = 0
+    dados_comparados = 0
+
+    for i in range(len(file1)):
+        dados_comparados += 1
+        linha1 = file1[i]
+        linha2 = file2[i]
+
+        text = linha1.split(":")
+
+        if ":" not in linha1 and linha1 != "\n" and linha1 != "\n":
+            print (linha1)
+
+        if ":" not in linha1:
+            dados_comparados-=1
+
+        if ":" in linha1:
+            dado1 = float(linha1.split(":")[1].strip())
+            dado2 = float(linha2.split(":")[1].strip())
+            if linha1 != linha2:
+                diferencas+=1
+                try:
+                    porcentagem = (dado2/dado1)
+                    diff = dado2 - dado1
+                    change = round(diff/dado1,3)
+                except ZeroDivisionError:
+                    porcentagem = 0
+     
+                if change > 0:
+                    change_show = "+" + str(round(change*100,2))
+                else:
+                    change_show = str(round(change*100,2))
+
+                dadoanalisado = text[0]
+                if change > 0:
+                    print(dadoanalisado + " cresceu de " + str(round(dado1,3)) + " para " + str(round(dado2,3)) + " representando um crescimento de " + str(change_show) + "%")
+                elif change < 0:
+                    print(dadoanalisado + " diminuiu de " + str(round(dado1,3)) + " para " + str(round(dado2,3)) + " representando uma queda de " + str(change_show) + "%")
+
+                # print(text[0] + ": " + str(round(dado1,3)) + " != " + str(round(dado2,3)) + " | ("+str(change_show)+"%)")
+            else:
+                iguais+=1
+
+    if iguais == dados_comparados:
+        print("\nTodos os dados são iguais")
+
+
+    return
+
+def comparar():
+    print("\nArquiteturas:")
+    print("1 - WB e LRU")
+    print("2 - WB e FIFO")
+    print("3 - WT e LRU")
+    print("4 - WT e FIFO")
+
+    print("\nTraces:")
+    print("1 - Muita leitura de dado(16), Muito Fetch de Instrução(16) e Pouca Gravação de dado(8)")
+    print("2 - Média gravação de dado(12), Muito fetch de instrução(20) e pouca leitura de dado(8)")
+    print("")
+
+    arquitetura1 = int(input("Digite o número da primeira arquitetura [1-4]: "))
+    trace1 = int(input("Digite o trace da primeira arquitetura [1-2]: "))
+
+    print("")
+
+    arquitetura2 = int(input("Digite o número da primeira arquitetura [1-4]: "))
+    trace2 = int(input("Digite o trace da primeira arquitetura [1-2]: "))
+
+    if arquitetura1 > 4 or arquitetura1 < 1 or arquitetura2 > 4 or arquitetura2 < 1:
+        print("Arquitetura inválida")
+        exit()
+    if trace1 > 2 or trace1 < 1 or trace2 > 2 or trace2 < 1:
+        print("Trace inválido")
+        exit()
+
+    if arquitetura1 == 1:
+        arq_text = "WB e LRU"
+    elif arquitetura1 == 2:
+        arq_text = "WB e FIFO"
+    elif arquitetura1 == 3:
+        arq_text = "WT e LRU"
+    elif arquitetura1 == 4:
+        arq_text = "WT e FIFO"
+
+    if arquitetura2 == 1:
+        arq_text2 = "WB e LRU"
+    elif arquitetura2 == 2:
+        arq_text2 = "WB e FIFO"
+    elif arquitetura2 == 3:
+        arq_text2 = "WT e LRU"
+    elif arquitetura2 == 4:
+        arq_text2 = "WT e FIFO"
+
+
+    print("\nComparando arquitetura "+str(arq_text)+" usando trace "+str(trace1)+" com a arquitetura "+str(arq_text2)+" usando trace "+str(trace2)+"\n")
+    print("="*75)
+    comparar_arquiteturas(arquitetura1, trace1, arquitetura2, trace2)
+
+
+    return
     
 
 if __name__ == "__main__":
-    choice = int(input("1 - Manual\n2 - Auto\nDigite a sua escolha: "))
+    choice = int(input("1 - Gerar comparação entre dois arquivos\n2 - Gerar comparação entre vários arquivos brutos\n3 - Analisar estatistícas\nDigite a sua escolha: "))
     if choice == 1:
         manual()
     elif choice == 2:
         auto()
+    elif choice == 3:
+        comparar()
     else:
         print("Invalid choice")
         exit()
