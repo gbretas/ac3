@@ -1,0 +1,51 @@
+Impacto dos diferentes tipos e conjuntos de política de escrita e algoritmos de substituição por meio de rotinas diferentes de acesso a memória 
+
+gerador de trace
+
+Rótulo “0”: leitura de dados;
+Rótulo “1”: gravação de dados;
+Rótulo “2”: busca de instrução;
+
+
+Combinações de Trace: (40 instruções)
+(.1): Muita leitura de dado(16), Muito Fetch de Instrução(16) e Pouca Gravação de dado(8)
+(.2): Média gravação de dado(12), muito fetch de instrução(20) e pouca leitura de dado(8)
+
+Combinações:
+(1) WriteBack e LRU     -> (1.1)
+                        -> (1.2)
+
+(2) WriteBack e FIFO    -> (2.1)
+                        -> (2.2)
+                    
+(3) WriteThrough e LRU  -> (3.1)
+                        -> (3.2)
+                    
+(4) WriteThrough e FIFO -> (4.1)
+                        -> (4.2)
+                    
+
+============================
+
+WriteBack: 
+Usando esta técnica a CPU escreve dados diretamente no cache, cabendo ao sistema a escrita posterior da informação na memória principal.
+
+WriteThrough:
+Quando o sistema escreve para uma zona de memória, que está contida no cache, escreve a informação, tanto na linha específica do cache como na zona de memória ao mesmo tempo. Este tipo de caching providencia pior desempenho do que Write-Back Cache, mas é mais simples de implementar e tem a vantagem da consistência interna, porque o cache nunca está de\ssincronizada com a memória como acontece com a técnica WriteBack.
+
+______________
+
+LRU: Least Recently Used
+Pense no cache LRU como uma limpeza da garagem. Você jogará fora os itens que não usa há muito tempo e manterá os que usa com frequência.
+
+FIFO: First In First Out
+Pense no FIFO como carros passando por um túnel. O primeiro carro a entrar no túnel será o primeiro a sair do outro lado.
+
+
+LRU ele será melhor em casos que o "trace" lê dados iguais mais frequentemente.
+
+FIFO será melhor em casos que o "trace" não lê/armazena os mesmos dados frequentemente.
+
+===========================
+
+Com base nos conceitos temos os seguintes resultados esperados:
