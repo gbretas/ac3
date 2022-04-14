@@ -81,7 +81,7 @@ def manual():
     if not os.path.exists('final_manual'):
         os.makedirs('final_manual')
 
-    final = open('final_manual'+nome, 'w')
+    final = open('final_manual/'+nome, 'w')
 
     for i in range(len(result1)):
         dados_comparados += 1
